@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wux.wenku">
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="com.wux.wenku.app.AppConfig"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.wux.wenku.activity.TabLayoutActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.fanyafeng.wenku.activity.SnackBarActivity"
+            android:label="@string/title_activity_snack_bar"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.fanyafeng.wenku.activity.FloatingActionButtonActivity"
+            android:label="@string/title_activity_floating_action_button"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.wux.wenku.activity.LoginActivity"
+            android:label="@string/title_activity_edit_text_floating_label"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.wux.wenku.activity.LoginWebViewActivity"
+            android:label="@string/title_activity_edit_text_floating_label"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.fanyafeng.wenku.activity.DrawerLayoutActivity"
+            android:label="@string/title_activity_drawer_layout"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.fanyafeng.wenku.activity.MainActivity"
+            android:label="@string/title_activity_tab_layout"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.fanyafeng.wenku.activity.ToolbarEnterAlwaysActivity"
+            android:label="@string/title_activity_toolbar_enter_always"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.fanyafeng.wenku.activity.ToolbarExitUntilCollapsedActivity"
+            android:label="@string/title_activity_toolbar_exit_until_collapsed"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.wux.wenku.activity.StaggeredGridLayoutActivity"
+            android:label="@string/title_activity_staggered_grid_layout"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.wux.wenku.activity.StaggeredListLayoutActivity"
+            android:label="@string/title_activity_staggered_grid_layout"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.fanyafeng.wenku.activity.BottomSheetActivity"
+            android:label="@string/title_activity_bottom_sheet"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.fanyafeng.wenku.activity.V7WidgetActivity"
+            android:label="@string/title_activity_v7_widget"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.fanyafeng.wenku.activity.StaggeredActivity"
+            android:label="@string/title_activity_staggered"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.fanyafeng.wenku.activity.SwitchListActivity"
+            android:label="@string/title_activity_switch_list"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.fanyafeng.wenku.activity.NestActivity"
+            android:label="@string/title_activity_nest"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.fanyafeng.wenku.activity.FocusActivity"
+            android:label="@string/title_activity_focus"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+
+</manifest>

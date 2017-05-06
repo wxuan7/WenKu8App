@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.wux.wenku.BaseActivity">
+
+
+    <item
+        android:id="@+id/action_refulsh"
+        android:icon="@drawable/send"
+        android:orderInCategory="100"
+        android:title="refulsh"
+        app:showAsAction="ifRoom">
+    </item>
+
+    <item
+        android:id="@+id/action_get_cookied"
+        android:icon="@drawable/add"
+        android:orderInCategory="100"
+        android:title="@string/action_get_cookie"
+        app:showAsAction="ifRoom">
+    </item>
+</menu>
