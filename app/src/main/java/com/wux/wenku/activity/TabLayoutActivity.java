@@ -17,6 +17,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -36,12 +38,13 @@ import com.wux.wenku.view.MaterialListFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabLayoutActivity extends BaseActivity implements ViewPager.OnPageChangeListener {
+public class TabLayoutActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener ,View.OnClickListener,AppConfig.OnHandlerCallBack{
     private TabLayout layoutTab;
     private ViewPager viewpagerTab;
 
     //小说详情页的控件
-    private ImageView iv_cover = null;//封面
+    private SimpleDraweeView sdv_cover = null;//封面
+    private TextView tv_title = null;// 标题
     private TextView tv_lastupd = null;// 最后更新章节
     private TextView tv_catalog = null;// 目录链接
     private TextView tv_intro = null; // 简介
@@ -73,6 +76,8 @@ public class TabLayoutActivity extends BaseActivity implements ViewPager.OnPageC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab_layout);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -82,14 +87,14 @@ public class TabLayoutActivity extends BaseActivity implements ViewPager.OnPageC
                         .setAction("Action", null).show();
             }
         });
-        isSetNavigationIcon = false;
+//        isSetNavigationIcon = false;
 //        stringList = getResources().getStringArray(R.array.menuname);
 //        urlList = getResources().getStringArray(R.array.menuurl);
-        initView();
+        initView(toolbar);
         initData();
     }
 
-    private void initView() {
+    private void initView(Toolbar toolbar) {
         layoutTab = (TabLayout) findViewById(R.id.layoutTab);
         viewpagerTab = (ViewPager) findViewById(R.id.viewpagerTab);
         fragmentList = new ArrayList<>();
@@ -102,17 +107,23 @@ public class TabLayoutActivity extends BaseActivity implements ViewPager.OnPageC
             fragmentList.add(tabLayoutFragment);
         }
         layoutDrawer = (DrawerLayout) findViewById(R.id.layoutDrawer);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, layoutDrawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        layoutDrawer.setDrawerListener(toggle);
+        toggle.syncState();
         layoutNavigationView = (NavigationView) findViewById(R.id.layoutNavigationView);
 //        占用navicon,由于base中设置被覆盖了
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, layoutDrawer, toolbar, R.string.app_name, R.string.app_name);
-        actionBarDrawerToggle.syncState();
-        layoutDrawer.setDrawerListener(actionBarDrawerToggle);
+//        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, layoutDrawer, toolbar, R.string.app_name, R.string.app_name);
+//        actionBarDrawerToggle.syncState();
+//        layoutDrawer.setDrawerListener(actionBarDrawerToggle);
         // 底部上弹的小说详情
         detailBottom = (NestedScrollView) findViewById(R.id.nestedBottom);
-        iv_cover = (ImageView) findViewById(R.id.iv_cover);
+        sdv_cover = (SimpleDraweeView) findViewById(R.id.sdv_cover);
+        tv_title = (TextView) findViewById(R.id.tv_title);
         tv_lastupd = (TextView) findViewById(R.id.tv_lastupd);
         tv_catalog = (TextView) findViewById(R.id.tv_catalog);
         tv_intro = (TextView) findViewById(R.id.tv_intro);
+        tv_catalog.setOnClickListener(this);
     }
 
     private void initData() {
@@ -193,12 +204,23 @@ public class TabLayoutActivity extends BaseActivity implements ViewPager.OnPageC
 
     @Override
     public void onPageSelected(int position) {
-        toolbar.setTitle(stringList[position]);
+//        toolbar.setTitle(stringList[position]);
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    @Override
+    public void handlercallback(int arg1, int arg2, Bundle data) {
+        switch (arg1){
+            case 1:
+                if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                }
+                break;
+        }
     }
 
 
@@ -236,7 +258,10 @@ public class TabLayoutActivity extends BaseActivity implements ViewPager.OnPageC
                 Intent loginIntent = new Intent(TabLayoutActivity.this, LoginActivity.class);
                 startActivity(loginIntent);
                 break;
-
+            case R.id.tv_catalog:
+                Intent intent = new Intent(TabLayoutActivity.this, NovelsActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 
@@ -249,10 +274,23 @@ public class TabLayoutActivity extends BaseActivity implements ViewPager.OnPageC
         if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         } else {
-            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+            sdv_cover.setImageURI(Uri.parse(novels.getnCoverImgUrl()));
             tv_lastupd.setText(novels.getnLastUpdChapter());
-            tv_catalog.setText("小说目录");
+            tv_title.setText(novels.getnTitle());
+            tv_catalog.setText("目录");
             tv_intro.setText(novels.getnContent());
+//            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(100);
+                        AppConfig.sendMessage(1,TabLayoutActivity.this,1,0,null);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();;
         }
     }
     @Override

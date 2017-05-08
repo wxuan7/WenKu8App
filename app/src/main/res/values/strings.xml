@@ -21,4 +21,8 @@
     <string name="title_activity_switch_list">SwitchListActivity</string>
     <string name="title_activity_nest">NestActivity</string>
     <string name="title_activity_focus">FocusActivity</string>
+    <string name="title_activity_novels">NovelsActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

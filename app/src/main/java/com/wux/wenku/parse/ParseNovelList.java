@@ -64,7 +64,7 @@ public class ParseNovelList extends ParseHTML{
 //                Element timeElement = NovelListElement
 //                        .select("div.archive-data span.glyphicon-class").first();
                 String url = titleElement.attr("href");
-                String title = ((page - 1) * num + i + 1) + "、" + titleElement.text();
+                String title =  titleElement.text();
 //                String summary = summaryElement.text();
 //                if (summary.length() > 70)
 //                    summary = summary.substring(0, 70);

@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    tools:openDrawer="start"
     tools:context="com.wux.wenku.activity.TabLayoutActivity">
 
     <android.support.design.widget.CoordinatorLayout
@@ -39,51 +40,6 @@
 
         <include layout="@layout/content_tab_layout" />
 
-        <!--父控件必须是CoordinatorLayout-->
-        <android.support.v4.widget.NestedScrollView
-            android:id="@+id/nestedBottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_behavior="@string/bottom_sheet_behavior">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="?attr/actionBarSize"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_gravity="center_horizontal"
-                    android:id="@+id/iv_cover"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/tv_lastupd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"
-                    android:padding="20dp"
-                    android:text="最后更新章节"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/tv_catalog"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"
-                    android:padding="20dp"
-                    android:text="人不会死在绝境，却往往栽在十字路口"
-                    android:textColor="@android:color/white" />
-                <TextView
-                    android:id="@+id/tv_intro"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"
-                    android:padding="20dp"
-                    android:text="人不会死在绝境，却往往栽在十字路口"
-                    android:textColor="@android:color/white" />
-            </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
@@ -93,6 +49,15 @@
             android:layout_margin="@dimen/fab_margin"
             android:src="@android:drawable/ic_dialog_email" />
 
+        <!--父控件必须是CoordinatorLayout-->
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nestedBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/bottom_sheet_behavior">
+
+            <include layout="@layout/content_novel_detail" />
+        </android.support.v4.widget.NestedScrollView>
     </android.support.design.widget.CoordinatorLayout>
     <!--必须放在这-->
     <android.support.design.widget.NavigationView

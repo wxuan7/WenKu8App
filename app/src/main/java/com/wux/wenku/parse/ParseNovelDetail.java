@@ -22,7 +22,6 @@ import java.util.ArrayList;
  * 如果html的标签的class包含空格，例如：<li class="archive-item clearfix"></>需要连续调用select  select("li.archive-item").select("li.clearfix");
  */
 public class ParseNovelDetail extends ParseHTML {
-    static int num = 10;
 
     public static void parseDetail(Novels novels) {
         setCookies();//设置cookie
@@ -43,9 +42,11 @@ public class ParseNovelDetail extends ParseHTML {
             }
             //  最近更新的章节信息
             novels.setnLastUpdChapter(lastElement.text());// 最新一章节名
+            Log.e("解析作品详情-最后一章节", lastElement.text());
             novels.setnLastUpdChapterUrl(lastElement.attr("href"));// 最新章节名称
 
             novels.setnContent(contentElement.text());
+            Log.e("解析作品详情-简介", contentElement.text());
 
 
             Element catalogElement = doc.select("div#content div div div span fieldset div a").first();
@@ -53,7 +54,7 @@ public class ParseNovelDetail extends ParseHTML {
 //            Elements NovelListElements = masthead.select("td div");
         } catch (Exception e) {
             String msg = e.getMessage();
-            Log.e("解析章节目录", msg);
+            Log.e("解析作品详情", msg);
             e.printStackTrace();
         }
 //        return novels;
