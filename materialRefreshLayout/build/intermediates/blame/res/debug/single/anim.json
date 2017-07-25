@@ -4,32 +4,12 @@
         "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
     },
     {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\anim\\abc_popup_enter.xml"
-    },
-    {
         "merged": "F:\\Android Workspace\\WenKu8App-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
         "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
     },
     {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
-    },
-    {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\anim\\abc_slide_out_top.xml"
-    },
-    {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\anim\\abc_fade_in.xml"
-    },
-    {
         "merged": "F:\\Android Workspace\\WenKu8App-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
         "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\anim\\abc_fade_out.xml"
-    },
-    {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\anim\\abc_slide_in_top.xml"
     },
     {
         "merged": "F:\\Android Workspace\\WenKu8App-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
@@ -40,15 +20,7 @@
         "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\anim\\abc_popup_exit.xml"
     },
     {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\anim\\abc_fade_out.xml"
-    },
-    {
         "merged": "F:\\Android Workspace\\WenKu8App-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\anim\\abc_slide_in_bottom.xml"
-    },
-    {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
         "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\anim\\abc_slide_in_bottom.xml"
     },
     {
@@ -65,18 +37,6 @@
     },
     {
         "merged": "F:\\Android Workspace\\WenKu8App-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\anim\\abc_slide_out_bottom.xml"
-    },
-    {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\anim\\abc_popup_exit.xml"
-    },
-    {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
-    },
-    {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
         "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\anim\\abc_slide_out_bottom.xml"
     }
 ]

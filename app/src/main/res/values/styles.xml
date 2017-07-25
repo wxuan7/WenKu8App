@@ -33,4 +33,10 @@
         <item name="android:textColor">@color/colorAccent</item>
     </style>
 
+    <style name="NoBackGroundDialog" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+    <style name="DialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground"> @android:color/transparent </item>
+        <item name="android:backgroundDimEnabled">false</item>    </style>
 </resources>

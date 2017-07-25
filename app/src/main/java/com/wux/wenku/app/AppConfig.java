@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.wux.wenku.util.CrashHandler;
+import com.wux.wenku.util.JsoupUtil;
 
 import java.util.Map;
 
@@ -20,7 +21,10 @@ public class AppConfig extends Application {
     public static String _UserName = "kuien";
     public static String _Pwd = "kuien";
     public static String _LoginURL = "http://www.wenku8.com/login.php?do=submit";//登录url
+    public static String _IndexURL =  "http://www.wenku8.com";
     public static MainHandler mainHandler = null;
+    public static String _nbsp = " ";//&nbsp占位符
+    public static JsoupUtil mJsoupUtil=null;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -29,6 +33,7 @@ public class AppConfig extends Application {
         handler.init(getApplicationContext());
         Thread.setDefaultUncaughtExceptionHandler(handler);
         mainHandler = new MainHandler(this);
+        mJsoupUtil = JsoupUtil.getInstance();
         /* 初始化日志 */
 //        ConfigureLog4J.configure();
     }

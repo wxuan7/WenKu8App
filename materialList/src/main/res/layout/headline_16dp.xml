@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <TextView android:id="@+id/title"
-        
-              style="@style/Material_Card_Title"
-              tools:text="Title"/>
+    <TextView
+        android:id="@+id/title"
+        style="@style/Material_Card_Title"
+        android:layout_gravity="left|center_vertical"
+        android:gravity="center_vertical|left"
+        tools:text="Title" />
 
-    <TextView android:id="@+id/subtitle"
-              style="@style/Material_Card_Subtitle_16dp"
-              tools:text="Subtitle"/>
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_gravity="left|center_vertical"
+        android:gravity="center_vertical|left"
+        style="@style/Material_Card_Subtitle_16dp"
+        tools:text="Subtitle" />
 </LinearLayout>

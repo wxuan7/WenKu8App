@@ -10,7 +10,7 @@ import com.wux.wenku.BaseActivity;
 import com.wux.wenku.R;
 import com.wux.wenku.activity.LoginActivity;
 import com.wux.wenku.activity.StaggeredGridLayoutActivity;
-import com.wux.wenku.activity.TabLayoutActivity;
+import com.wux.wenku.activity.HomeActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -60,7 +60,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(this, DrawerLayoutActivity.class));
                 break;
             case R.id.btnTestTabLayout:
-                startActivity(new Intent(this, TabLayoutActivity.class));
+                startActivity(new Intent(this, HomeActivity.class));
                 break;
             case R.id.btnTestToolbarEnter:
                 startActivity(new Intent(this, ToolbarEnterAlwaysActivity.class));

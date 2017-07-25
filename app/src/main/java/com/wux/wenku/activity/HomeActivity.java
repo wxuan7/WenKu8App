@@ -3,8 +3,6 @@ package com.wux.wenku.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -12,53 +10,35 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.squareup.picasso.Picasso;
-import com.wux.wenku.R;
 import com.fanyafeng.wenku.activity.MainActivity;
 import com.wux.wenku.BaseActivity;
-import com.wux.wenku.app.AppConfig;
-import com.wux.wenku.model.Novels;
-import com.wux.wenku.parse.ParseNovelDetail;
+import com.wux.wenku.BaseFragment;
+import com.wux.wenku.R;
+import com.wux.wenku.view.BottomSheetView;
 import com.wux.wenku.view.MaterialListFragment;
+import com.wux.wenku.view.TagFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabLayoutActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener ,View.OnClickListener,AppConfig.OnHandlerCallBack{
+public class HomeActivity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener,TagFragment.OnFragmentInteractionListener {
     private TabLayout layoutTab;
     private ViewPager viewpagerTab;
 
-    //小说详情页的控件
-    private SimpleDraweeView sdv_cover = null;//封面
-    private TextView tv_title = null;// 标题
-    private TextView tv_lastupd = null;// 最后更新章节
-    private TextView tv_catalog = null;// 目录链接
-    private TextView tv_intro = null; // 简介
 
-    //    private String[] stringList = new String[]{"LinearLayout", "GridView", "ListView", "LinearLayout", "StaggeredGridLayout"};
-    private String[] stringList = new String[]{"轻小说列表", "热门轻小说", /*"动画化作品",*/ "今日更新", "新书一览", "完结全本"};
-    private String[] urlList = new String[]{
-            "http://www.wenku8.com/modules/article/articlelist.php",
-            "http://www.wenku8.com/modules/article/toplist.php?sort=allvisit",
-//            "http://www.wenku8.com/modules/article/toplist.php?sort=anime",
-            "http://www.wenku8.com/modules/article/toplist.php?sort=lastupdate",
-            "http://www.wenku8.com/modules/article/toplist.php?sort=postdate",
-            "http://www.wenku8.com/modules/article/articlelist.php?fullflag=1"};
-    private List<Fragment> fragmentList;
+    private String[] stringList;//名称
+    private String[] urlList;// 链接
+    private List<BaseFragment> fragmentList;
 
     private DrawerLayout layoutDrawer;
     private MyViewPagerAdapter myViewPagerAdapter;
@@ -68,9 +48,11 @@ public class TabLayoutActivity extends AppCompatActivity implements ViewPager.On
     private final static String imageUri = "http://img.wenku8.com/image/1/1657/1657s.jpg";
 
 
-    private NestedScrollView detailBottom;// 详情页
+    private BottomSheetView bottomSheetView = null;
+
     private TextView tv_article;//正文文本
-    private BottomSheetBehavior bottomSheetBehavior;
+
+    private int pos = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,9 +69,11 @@ public class TabLayoutActivity extends AppCompatActivity implements ViewPager.On
                         .setAction("Action", null).show();
             }
         });
-//        isSetNavigationIcon = false;
-//        stringList = getResources().getStringArray(R.array.menuname);
-//        urlList = getResources().getStringArray(R.array.menuurl);
+        isSetNavigationIcon = false;
+        bottomSheetView = new BottomSheetView(this);
+
+        stringList = getResources().getStringArray(R.array.menuname);
+        urlList = getResources().getStringArray(R.array.menuurl);
         initView(toolbar);
         initData();
     }
@@ -99,31 +83,26 @@ public class TabLayoutActivity extends AppCompatActivity implements ViewPager.On
         viewpagerTab = (ViewPager) findViewById(R.id.viewpagerTab);
         fragmentList = new ArrayList<>();
         for (int i = 0; i < stringList.length; i++) {
+            if(i==stringList.length-1){
+                break;
+            }
             MaterialListFragment tabLayoutFragment = new MaterialListFragment();
             Bundle bundle = new Bundle();
             bundle.putString("flag", "2");
-            bundle.putString("url",urlList[i]);
+            bundle.putString("url", urlList[i]);
             tabLayoutFragment.setArguments(bundle);
             fragmentList.add(tabLayoutFragment);
         }
+//        TagFragment tagFragment = new TagFragment();
+        fragmentList.add(TagFragment.newInstance());
         layoutDrawer = (DrawerLayout) findViewById(R.id.layoutDrawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, layoutDrawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         layoutDrawer.setDrawerListener(toggle);
         toggle.syncState();
         layoutNavigationView = (NavigationView) findViewById(R.id.layoutNavigationView);
-//        占用navicon,由于base中设置被覆盖了
-//        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, layoutDrawer, toolbar, R.string.app_name, R.string.app_name);
-//        actionBarDrawerToggle.syncState();
-//        layoutDrawer.setDrawerListener(actionBarDrawerToggle);
         // 底部上弹的小说详情
-        detailBottom = (NestedScrollView) findViewById(R.id.nestedBottom);
-        sdv_cover = (SimpleDraweeView) findViewById(R.id.sdv_cover);
-        tv_title = (TextView) findViewById(R.id.tv_title);
-        tv_lastupd = (TextView) findViewById(R.id.tv_lastupd);
-        tv_catalog = (TextView) findViewById(R.id.tv_catalog);
-        tv_intro = (TextView) findViewById(R.id.tv_intro);
-        tv_catalog.setOnClickListener(this);
+        bottomSheetView.initView();
     }
 
     private void initData() {
@@ -147,31 +126,7 @@ public class TabLayoutActivity extends AppCompatActivity implements ViewPager.On
         layoutNavigationView.inflateMenu(R.menu.menu_drawer_nav);
         onMenuCheck(layoutNavigationView);
 
-        initNest(detailBottom);
-    }
-    /**
-     * 加载bottomSheet
-     *
-     * @param view
-     */
-    private void initNest(final View view) {
-        bottomSheetBehavior = BottomSheetBehavior.from(view);
-        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-
-        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            @Override
-            public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                if (newState == BottomSheetBehavior.STATE_COLLAPSED || newState == BottomSheetBehavior.STATE_HIDDEN) {
-                    view.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-                view.setVisibility(View.VISIBLE);
-                ViewCompat.setAlpha(view, slideOffset);
-            }
-        });
+//        bottomSheetView.initNest();
     }
 
     private void onMenuCheck(NavigationView navigationView) {
@@ -180,14 +135,16 @@ public class TabLayoutActivity extends AppCompatActivity implements ViewPager.On
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_menu_home:
-                        Toast.makeText(TabLayoutActivity.this, "点击第一个", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HomeActivity.this, "点击第一个", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_menu_categories:
+                        startActivity(new Intent(HomeActivity.this, FavoriteActivity.class));
                         break;
                     case R.id.nav_menu_feedback:
+                        startActivity(new Intent(HomeActivity.this, SearchActivity.class));
                         break;
                     case R.id.nav_menu_setting:
-                        startActivity(new Intent(TabLayoutActivity.this, MainActivity.class));
+                        startActivity(new Intent(HomeActivity.this, MainActivity.class));
                         break;
                 }
 //                item.setChecked(true);
@@ -205,6 +162,8 @@ public class TabLayoutActivity extends AppCompatActivity implements ViewPager.On
     @Override
     public void onPageSelected(int position) {
 //        toolbar.setTitle(stringList[position]);
+        bottomSheetView.tableChanage();
+
     }
 
     @Override
@@ -213,23 +172,16 @@ public class TabLayoutActivity extends AppCompatActivity implements ViewPager.On
     }
 
     @Override
-    public void handlercallback(int arg1, int arg2, Bundle data) {
-        switch (arg1){
-            case 1:
-                if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                }
-                break;
-        }
-    }
+    public void onFragmentInteraction(Uri uri) {
 
+    }
 
     class MyViewPagerAdapter extends FragmentStatePagerAdapter {
 
         private String[] titleList;
-        private List<Fragment> fragmentList;
+        private List<BaseFragment> fragmentList;
 
-        public MyViewPagerAdapter(FragmentManager fm, String[] titleList, List<Fragment> fragmentList) {
+        public MyViewPagerAdapter(FragmentManager fm, String[] titleList, List<BaseFragment> fragmentList) {
             super(fm);
             this.titleList = titleList;
             this.fragmentList = fragmentList;
@@ -255,51 +207,37 @@ public class TabLayoutActivity extends AppCompatActivity implements ViewPager.On
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_head:
-                Intent loginIntent = new Intent(TabLayoutActivity.this, LoginActivity.class);
+                Intent loginIntent = new Intent(HomeActivity.this, LoginActivity.class);
                 startActivity(loginIntent);
-                break;
-            case R.id.tv_catalog:
-                Intent intent = new Intent(TabLayoutActivity.this, NovelsActivity.class);
-                startActivity(intent);
                 break;
         }
     }
 
     /**
      * 展示小说的封面，最近更新，目录链接，简介
-     *
+     * <p>
      * 需要增加同类作品推荐，同作者作品展示
      */
-    public void initNovelDetail(final Novels novels){
-        if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
-            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-        } else {
-            sdv_cover.setImageURI(Uri.parse(novels.getnCoverImgUrl()));
-            tv_lastupd.setText(novels.getnLastUpdChapter());
-            tv_title.setText(novels.getnTitle());
-            tv_catalog.setText("目录");
-            tv_intro.setText(novels.getnContent());
-//            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        Thread.sleep(100);
-                        AppConfig.sendMessage(1,TabLayoutActivity.this,1,0,null);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }).start();;
-        }
+    public void initNovelDetail(String url) {
+        bottomSheetView.syncNovelFetail(url);
+//        bottomSheetView.initNovelDetail(novels);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Toast.makeText(HomeActivity.this, "home", Toast.LENGTH_SHORT).show();
+                layoutDrawer.openDrawer(layoutNavigationView);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     public void onBackPressed() {
-        if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
-            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-        } else {
+        if (bottomSheetView.isClose()) {
             super.onBackPressed();
-
         }
     }
 }

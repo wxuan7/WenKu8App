@@ -81,7 +81,7 @@ public class RVAdapter extends BaseRecyclerAdapter<RVAdapter.ViewHolder> {
                 holder.sdvRvItem.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View v) {
-                        onItemClickListener.onItemClickListener(v, stringList.get(position), position);
+                        onItemClickListener.onItemLongClickListener(v, stringList.get(position), position);
                         return false;
                     }
                 });
@@ -97,7 +97,7 @@ public class RVAdapter extends BaseRecyclerAdapter<RVAdapter.ViewHolder> {
             holder.tv_catalog.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    onItemClickListener.onItemClickListener(v, stringList.get(position), position);
+                    onItemClickListener.onItemLongClickListener(v, stringList.get(position), position);
                     return false;
                 }
             });

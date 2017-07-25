@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wux.wenku.activity.NovelsBookMarkActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+        <!-- app:tabMode="scrollable" app:tabGravity="fill" -->
+        <!-- app:tabMode="scrollable" app:tabGravity="center" 一共有四种组合,大家自己可以尝试一下-->
+        <android.support.design.widget.TabLayout
+            android:id="@+id/layoutTab"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:tabGravity="center"
+            app:tabIndicatorColor="#0ddcff"
+            app:tabMode="fixed" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_tab_layout" />
+
+</android.support.design.widget.CoordinatorLayout>

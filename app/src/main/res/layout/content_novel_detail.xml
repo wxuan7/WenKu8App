@@ -2,51 +2,185 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
     android:layout_height="wrap_content"
-    android:layout_marginTop="?attr/actionBarSize"
-    android:orientation="vertical">
+    android:layout_marginTop="95dp"
+    android:background="@android:color/white"
+    android:elevation="20dp"
+    android:orientation="vertical"
+    android:paddingBottom="100dp"
+    android:paddingTop="20dp">
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/sdv_cover"
-        android:layout_width="200dp"
-        android:layout_height="300dp"
-        fresco:roundingBorderWidth="1dp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:elevation="5dp" />
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
         android:text="书名"
-        android:textColor="@android:color/white" />
+        android:textSize="20dp" />
+
+
+    <LinearLayout
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sdv_cover"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:elevation="10dp"
+
+            fresco:roundingBorderWidth="3dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_classify"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="分类" />
+
+            <TextView
+                android:id="@+id/tv_author"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="作者" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="文章状态" />
+
+            <TextView
+                android:id="@+id/tv_lastupdtime"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="最后更新时间" />
+
+            <TextView
+                android:id="@+id/tv_length"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="文章长度" />
+
+        </LinearLayout>
+    </LinearLayout>
 
     <TextView
+        android:layout_marginTop="20dp"
         android:id="@+id/tv_lastupd"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:padding="20dp"
-        android:text="最后更新章节"
-        android:textColor="@android:color/white" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/shape_catalog"
+        android:padding="10dp"
+        android:paddingTop="10dp"
+        android:text="最后更新章节" />
 
-    <TextView
-        android:id="@+id/tv_catalog"
+    <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:padding="20dp"
-        android:text="人不会死在绝境，却往往栽在十字路口"
-        android:textColor="@android:color/white" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_catalog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_catalog"
+            android:padding="10dp"
+            android:text="开始阅读" />
+
+        <TextView
+            android:id="@+id/tv_addbookcase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_catalog"
+            android:padding="10dp"
+            android:text="加入书架" />
+
+        <TextView
+            android:id="@+id/tv_uservote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_catalog"
+            android:padding="10dp"
+            android:text="推荐本书" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_intro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:padding="20dp"
-        android:layout_marginBottom="?attr/actionBarSize"
-        android:text="人不会死在绝境，却往往栽在十字路口"
-        android:textColor="@android:color/white" />
+        android:text="人不会死在绝境，却往往栽在十字路口" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="同分类作品" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_type1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="同分类完结作品" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_type2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="同作者作品"
+        android:visibility="gone" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_others"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 </LinearLayout>

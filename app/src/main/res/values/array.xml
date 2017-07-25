@@ -9,10 +9,11 @@
     <string-array name="menuurl">
         <item>http://www.wenku8.com/modules/article/articlelist.php</item>
         <item>http://www.wenku8.com/modules/article/toplist.php?sort=allvisit</item>
-        <!-- <item>http://www.wenku8.com/modules/article/toplist.php?sort=anime</item>-->
+        <item>http://www.wenku8.com/modules/article/toplist.php?sort=anime</item>
         <item>http://www.wenku8.com/modules/article/toplist.php?sort=lastupdate</item>
         <item>http://www.wenku8.com/modules/article/toplist.php?sort=postdate</item>
         <item>http://www.wenku8.com/modules/article/articlelist.php?fullflag=1</item>
+        <item></item>
     </string-array>
 
     <string-array name="menuname">
@@ -22,5 +23,32 @@
         <item>今日更新</item>
         <item>新书一览</item>
         <item>完结全本</item>
+        <item>分类</item>
     </string-array>
+    <string-array name="boocasename">
+        <item>默认书架</item>
+        <item>第1组书架</item>
+        <item>第2组书架</item>
+        <item>第3组书架</item>
+        <item>第4组书架</item>
+        <item>第5组书架</item>
+    </string-array>
+
+    <string-array name="ld_activityScreenTitles">
+        <item>书架</item>
+        <item>记录</item>
+        <item></item>
+        <item></item>
+        <item />
+        <item>退出</item>
+    </string-array>
+
+    <array name="ld_activityScreenIcons">
+        <item>@drawable/share</item>
+        <item>@drawable/share</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>@drawable/share</item>
+    </array>
 </resources>

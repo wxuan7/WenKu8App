@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/materialList/materialList.iml" filepath="$PROJECT_DIR$/materialList/materialList.iml" />
       <module fileurl="file://$PROJECT_DIR$/materialRefreshLayout/materialRefreshLayout.iml" filepath="$PROJECT_DIR$/materialRefreshLayout/materialRefreshLayout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/slidingrootnav/slidingrootnav.iml" filepath="$PROJECT_DIR$/slidingrootnav/slidingrootnav.iml" />
     </modules>
   </component>
 </project>

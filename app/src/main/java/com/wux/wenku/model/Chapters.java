@@ -6,9 +6,10 @@ import java.io.Serializable;
  * Created by WuX on 2017/4/27.
  */
 
-public class Chapters implements Serializable{
+public class Chapters implements Serializable {
     private int index;// 序号
     private String chapterName;// 文章名
+    private String text;//文章内容
     private String url;// 链接
 
     public int getIndex() {
@@ -33,5 +34,13 @@ public class Chapters implements Serializable{
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

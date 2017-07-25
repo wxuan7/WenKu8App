@@ -175,7 +175,7 @@ public class MaterialListAdapter extends RecyclerView.Adapter<MaterialListAdapte
      */
     public void clear() {
         for (int index = 0; index < mCardList.size(); ) {
-            final Card card = mCardList.get(index);
+             Card card = mCardList.get(index);
             if (!card.isDismissible()) {
                 index++;
             }

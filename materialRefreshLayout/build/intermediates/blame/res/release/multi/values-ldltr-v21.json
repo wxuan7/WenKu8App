@@ -1,29 +1,5 @@
 [
     {
-        "outputFile": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-ldltr-v21\\values-ldltr-v21.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 112,
-                    "endOffset": 163
-                },
-                "from": {
-                    "file": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 240,
-                        "endColumn": 112,
-                        "endOffset": 348
-                    }
-                }
-            }
-        ]
-    },
-    {
         "outputFile": "F:\\Android Workspace\\WenKu8App-master\\materialRefreshLayout\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-ldltr-v21\\values-ldltr-v21.xml",
         "map": [
             {

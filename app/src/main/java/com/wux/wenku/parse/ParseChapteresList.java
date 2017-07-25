@@ -9,6 +9,7 @@ import android.util.Log;
 import com.wux.wenku.app.AppConfig;
 import com.wux.wenku.model.Chapters;
 import com.wux.wenku.model.Novels;
+import com.wux.wenku.util.JsoupUtil;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -27,13 +28,15 @@ import java.util.Map;
 public class ParseChapteresList extends ParseHTML {
     static int num = 10;
 
-    public static ArrayList<Chapters> parseChapteresList(String href) {
-        setCookies();//设置cookie
+    public static ArrayList<Chapters> parseChapteresList(String href) throws Exception{
+//        setCookies();//设置cookie
         ArrayList<Chapters> list = new ArrayList<Chapters>();
         try {
-            String chapteresUrl = getChapteres(href);
-            String baseUrl = chapteresUrl.substring(0, chapteresUrl.lastIndexOf("/")) + "/";
-            Document doc = Jsoup.connect(chapteresUrl).cookies(AppConfig._Cookie).timeout(10000).get();
+//            String chapteresUrl = getChapteres(href);
+            String baseUrl = href.substring(0, href.lastIndexOf("/")) + "/";
+            Log.e("章节目录链接：",href);
+            Document doc = AppConfig.mJsoupUtil.getDocument(href);//Jsoup.connect(href).cookies(AppConfig._Cookie).timeout(10000).get();
+            Log.e("章节目录元素：",doc.text());
             Elements masthead = doc.select("table.css tbody tr");
 //            Elements NovelListElements = masthead.select("td div");
             int index = 0;
@@ -46,16 +49,17 @@ public class ParseChapteresList extends ParseHTML {
                     if (chaptereElement == null) {
                         chaptereElement = cElements.get(j);
                     }
-                    if (!"&nbsp;".equals(chaptereElement.text())) {
+                    // 去除空格占位部分
+                    if (!" ".equals(chaptereElement.text())) {
                         chapters.setChapterName(chaptereElement.text());
                     }
                     chapters.setIndex(index);
                     index++;
-                    chapters.setUrl(baseUrl + chaptereElement.attr("href"));
-                    if (null != chapters.getChapterName() & null != chapters.getUrl()) {
-                        if (!"".equals(chapters.getChapterName().trim()) & !"baseUrl".equals(chapters.getUrl().trim())) {
+                    String url = chaptereElement.attr("href");
+                    if(null!=url&&url.length()>0 ){
+                    chapters.setUrl(baseUrl + url);}
+                    if (null != chapters.getChapterName() && !"".equals(chapters.getChapterName().trim())) {
                             list.add(chapters);
-                        }
                     }
                 }
             }
@@ -63,18 +67,20 @@ public class ParseChapteresList extends ParseHTML {
             String msg = e.getMessage();
             Log.e("解析章节目录", msg);
             e.printStackTrace();
+            throw e;
         }
         return list;
     }
 
-    private static String getChapteres(String url) {
+    private static String getChapteres(String url) throws Exception{
         String c_url = "";
         try {
-            Document doc = Jsoup.connect(url).cookies(AppConfig._Cookie).timeout(10000).get();
+            Document doc =AppConfig.mJsoupUtil.getDocument(url);// Jsoup.connect(url).cookies(AppConfig._Cookie).timeout(10000).get();
             Element masthead = doc.select("div div div div div div span fieldset div a").first();
             c_url = masthead.attr("href");
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            throw e;
         }
         return c_url;
     }

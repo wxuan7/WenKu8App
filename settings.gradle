@@ -1,1 +1,1 @@
-include ':app', ':materialList', ':materialRefreshLayout'
+include ':app', ':materialList', ':materialRefreshLayout', ':slidingrootnav'

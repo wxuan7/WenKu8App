@@ -1,31 +1,5 @@
 [
     {
-        "outputFile": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endLine": 6,
-                    "endColumn": 13,
-                    "endOffset": 327
-                },
-                "from": {
-                    "file": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\values-hdpi\\values-hdpi.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 235,
-                        "endLine": 8,
-                        "endColumn": 13,
-                        "endOffset": 507
-                    }
-                }
-            }
-        ]
-    },
-    {
         "outputFile": "F:\\Android Workspace\\WenKu8App-master\\materialRefreshLayout\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
         "map": [
             {

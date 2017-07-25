@@ -1,9 +1,5 @@
 [
     {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\release\\color\\abc_primary_text_material_dark.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\color\\abc_primary_text_material_dark.xml"
-    },
-    {
         "merged": "F:\\Android Workspace\\WenKu8App-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\release\\color\\abc_primary_text_material_dark.xml",
         "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\color\\abc_primary_text_material_dark.xml"
     },
@@ -12,20 +8,8 @@
         "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\color\\abc_secondary_text_material_dark.xml"
     },
     {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\release\\color\\abc_primary_text_material_light.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\color\\abc_primary_text_material_light.xml"
-    },
-    {
         "merged": "F:\\Android Workspace\\WenKu8App-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\release\\color\\switch_thumb_material_light.xml",
         "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\color\\switch_thumb_material_light.xml"
-    },
-    {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\release\\color\\abc_primary_text_disable_only_material_dark.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
-    },
-    {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\release\\color\\switch_thumb_material_dark.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\color\\switch_thumb_material_dark.xml"
     },
     {
         "merged": "F:\\Android Workspace\\WenKu8App-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\release\\color\\abc_primary_text_disable_only_material_dark.xml",
@@ -40,28 +24,8 @@
         "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\color\\abc_primary_text_material_light.xml"
     },
     {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\release\\color\\abc_search_url_text.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\color\\abc_search_url_text.xml"
-    },
-    {
         "merged": "F:\\Android Workspace\\WenKu8App-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\release\\color\\switch_thumb_material_dark.xml",
         "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\color\\switch_thumb_material_dark.xml"
-    },
-    {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\release\\color\\abc_secondary_text_material_dark.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\color\\abc_secondary_text_material_dark.xml"
-    },
-    {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\release\\color\\abc_primary_text_disable_only_material_light.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
-    },
-    {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\release\\color\\switch_thumb_material_light.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\color\\switch_thumb_material_light.xml"
-    },
-    {
-        "merged": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\release\\color\\abc_secondary_text_material_light.xml",
-        "source": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\color\\abc_secondary_text_material_light.xml"
     },
     {
         "merged": "F:\\Android Workspace\\WenKu8App-master\\materialRefreshLayout\\build\\intermediates\\res\\merged\\release\\color\\abc_search_url_text.xml",

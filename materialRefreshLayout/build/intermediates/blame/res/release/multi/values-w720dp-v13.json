@@ -1,29 +1,5 @@
 [
     {
-        "outputFile": "F:\\Android Workspace\\MaterialDesign-master\\materialRefreshLayout\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-w720dp-v13\\values-w720dp-v13.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 76,
-                    "endOffset": 127
-                },
-                "from": {
-                    "file": "C:\\Users\\WuX\\.android\\build-cache\\2d44fe75b54c6923bd74df8e74c266d9715ff93e\\output\\res\\values-w720dp\\values-w720dp.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 231,
-                        "endColumn": 76,
-                        "endOffset": 303
-                    }
-                }
-            }
-        ]
-    },
-    {
         "outputFile": "F:\\Android Workspace\\WenKu8App-master\\materialRefreshLayout\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-w720dp-v13\\values-w720dp-v13.xml",
         "map": [
             {

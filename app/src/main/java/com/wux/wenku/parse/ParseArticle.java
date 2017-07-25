@@ -9,6 +9,8 @@ import android.util.Log;
 
 import com.wux.wenku.app.AppConfig;
 import com.wux.wenku.model.Chapters;
+import com.wux.wenku.util.FileUtil;
+import com.wux.wenku.util.JsoupUtil;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -24,43 +26,25 @@ import java.util.ArrayList;
 public class ParseArticle extends ParseHTML {
     static int num = 10;
 
-    public static String parseChapteresList(String href) {
-        setCookies();//设置cookie
-        ArrayList<Chapters> list = new ArrayList<Chapters>();
-        try {
-            Document doc = Jsoup.connect(href).cookies(AppConfig._Cookie).timeout(10000).get();
-            Element masthead = doc.select("div#content").first();
-            String content = masthead.text();
-            return content;
-//            int index = 0;
-//            for (int i = 0; i < masthead.size(); i++) {
-//                Element cElement = masthead.get(i);
-//                Elements cElements = cElement.select("td");
-//                for (int j = 0; j < cElements.size(); j++) {
-//                    Chapters chapters = new Chapters();
-//                    Element chaptereElement = cElements.get(j).select("a").first();
-//                    if (chaptereElement == null) {
-//                        chaptereElement = cElements.get(j);
-//                    }
-//                    if (!"&nbsp;".equals(chaptereElement.text())) {
-//                        chapters.setChapterName(chaptereElement.text());
-//                    }
-//                    chapters.setIndex(index);
-//                    index++;
-//                    chapters.setUrl(baseUrl + chaptereElement.attr("href"));
-//                    if (null != chapters.getChapterName() & null != chapters.getUrl()) {
-//                        if (!"".equals(chapters.getChapterName().trim()) & !"baseUrl".equals(chapters.getUrl().trim())) {
-//                            list.add(chapters);
-//                        }
-//                    }
-//                }
-//            }
-        } catch (Exception e) {
-            String msg = e.getMessage();
-            Log.e("解析章节目录", msg);
-            e.printStackTrace();
+    public static String parseArticle(String novel, String chapter, String href) throws Exception {
+        if (FileUtil.isFileExist(novel, chapter)) {
+            Thread.sleep(1000);
+            return FileUtil.getContent(novel, chapter);
+        } else {
+            ArrayList<Chapters> list = new ArrayList<Chapters>();
+            try {
+                Document doc = AppConfig.mJsoupUtil.getDocument(href);
+                Element masthead = doc.select("div#content").first();
+                String content = masthead.text().replace(" ", "\r\n");
+                FileUtil.putContent(novel,chapter,content);
+                return content;
+            } catch (Exception e) {
+                String msg = e.getMessage();
+                Log.e("解析章节目录", msg);
+                e.printStackTrace();
+                throw e;
+            }
         }
-        return "";
     }
 
 }

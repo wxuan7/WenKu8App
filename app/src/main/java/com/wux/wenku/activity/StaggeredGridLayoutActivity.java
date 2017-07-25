@@ -2,13 +2,9 @@ package com.wux.wenku.activity;
 
 import android.annotation.TargetApi;
 import android.app.ActivityOptions;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
@@ -30,16 +26,7 @@ import com.wux.wenku.model.Chapters;
 import com.wux.wenku.model.Novels;
 import com.wux.wenku.parse.ParseArticle;
 import com.wux.wenku.parse.ParseChapteresList;
-import com.wux.wenku.parse.ParseNovelList;
-import com.wux.wenku.util.BitmapUtil;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -147,10 +134,15 @@ public class StaggeredGridLayoutActivity extends BaseActivity implements AppConf
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            String text = ParseArticle.parseChapteresList(nList.get(position).getUrl());
-                            Bundle data = new Bundle();
-                            data.putString("text", text.replace(" ", "\n"));
-                            AppConfig.sendMessage(1, StaggeredGridLayoutActivity.this, 2, 0, data);
+                            try {
+                                String text = ParseArticle.parseArticle(mNovels.getnTitle(),nList.get(position).getChapterName(),nList.get(position).getUrl());
+                                Bundle data = new Bundle();
+                                data.putString("text", text.replace(" ", "\n"));
+                                AppConfig.sendMessage(1, StaggeredGridLayoutActivity.this, 2, 0, data);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                AppConfig.sendMessage(0,e.getMessage());
+                            }
                         }
                     }).start();
                 }
@@ -168,13 +160,18 @@ public class StaggeredGridLayoutActivity extends BaseActivity implements AppConf
         new Thread(new Runnable() {
             @Override
             public void run() {
-                ArrayList<Chapters> list = ParseChapteresList.parseChapteresList(mNovels.getnDetailsUrl());
-                nList.addAll(list);
-                for (Chapters ch : list) {
-                    mNovels.addChapterse(ch);
-                    titles_list.add(ch.getChapterName());
+                try {
+                    ArrayList<Chapters> list = ParseChapteresList.parseChapteresList(mNovels.getnDetailsUrl());
+                    nList.addAll(list);
+                    for (Chapters ch : list) {
+                        mNovels.addChapterse(ch);
+                        titles_list.add(ch.getChapterName());
+                    }
+                    AppConfig.sendMessage(1, StaggeredGridLayoutActivity.this, 1, 1, null);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    AppConfig.sendMessage(0,e.getMessage());
                 }
-                AppConfig.sendMessage(1, StaggeredGridLayoutActivity.this, 1, 1, null);
 
             }
         }).start();

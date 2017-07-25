@@ -125,8 +125,8 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void initData() {
-        et_username.setText("kuien");
-        et_pwd.setText("kuien");
+//        et_username.setText("kuien");
+//        et_pwd.setText("kuien");
 
 //        layoutEtPwd.setErrorEnabled(true);
 //        layoutEtPwd.setError("密码为数字");
