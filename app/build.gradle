@@ -24,7 +24,6 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':materialList')
-    compile project(':materialRefreshLayout')
     //如果使用了特殊的Header
     compile 'com.zhy:flowlayout-lib:1.0.1'
     compile 'com.android.support:appcompat-v7:25.3.1'

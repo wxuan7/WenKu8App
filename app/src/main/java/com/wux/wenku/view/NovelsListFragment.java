@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.cjj.MaterialRefreshLayout;
-import com.cjj.MaterialRefreshListener;
 import com.dexafree.materialList.card.Card;
 import com.dexafree.materialList.card.CardProvider;
 import com.dexafree.materialList.card.OnActionClickListener;
@@ -27,7 +25,6 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 import com.wux.wenku.BaseFragment;
 import com.wux.wenku.R;
-import com.wux.wenku.activity.HomeActivity;
 import com.wux.wenku.activity.HomeMenuActivity;
 import com.wux.wenku.app.AppConfig;
 import com.wux.wenku.model.Novels;
@@ -67,7 +64,7 @@ public class NovelsListFragment extends BaseFragment implements AppConfig.OnHand
             _Url = getArguments().getString("url");
             initView();
 //            initData();
-            if(0==getArguments().getInt("pos")){
+            if (0 == getArguments().getInt("pos")) {
                 firstLoadData();
             }
         }
@@ -277,6 +274,7 @@ public class NovelsListFragment extends BaseFragment implements AppConfig.OnHand
 
         return provider.endConfig().build();
     }
+
     /**
      * 展示小说的封面，最近更新，目录链接，简介
      * <p>
@@ -291,6 +289,6 @@ public class NovelsListFragment extends BaseFragment implements AppConfig.OnHand
         if (!bottomSheetView.isClose()) {
             return true;
         }
-       return super.onBackPressed();
+        return super.onBackPressed();
     }
 }

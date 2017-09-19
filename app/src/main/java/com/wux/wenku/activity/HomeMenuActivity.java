@@ -32,7 +32,6 @@ import com.wux.wenku.menu.DrawerAdapter;
 import com.wux.wenku.menu.DrawerItem;
 import com.wux.wenku.menu.SimpleItem;
 import com.wux.wenku.menu.SpaceItem;
-import com.wux.wenku.view.MaterialListFragment;
 import com.wux.wenku.view.NovelsListFragment;
 import com.wux.wenku.view.TagFragment;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;

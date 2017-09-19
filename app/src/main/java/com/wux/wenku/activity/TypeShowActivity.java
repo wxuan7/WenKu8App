@@ -9,10 +9,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.cjj.MaterialRefreshLayout;
-import com.cjj.MaterialRefreshListener;
 import com.dexafree.materialList.card.Card;
 import com.dexafree.materialList.card.CardProvider;
 import com.dexafree.materialList.card.OnActionClickListener;
@@ -30,7 +27,6 @@ import com.wux.wenku.app.AppConfig;
 import com.wux.wenku.model.Novels;
 import com.wux.wenku.parse.ParseNovelList;
 import com.wux.wenku.view.BottomSheetView;
-import com.wux.wenku.view.MaterialListFragment;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;

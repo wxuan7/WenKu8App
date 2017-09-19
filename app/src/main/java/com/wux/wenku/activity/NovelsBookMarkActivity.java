@@ -14,7 +14,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -23,8 +22,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cjj.MaterialRefreshLayout;
-import com.cjj.MaterialRefreshListener;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wux.wenku.BaseActivity;
 import com.wux.wenku.BaseFragment;
@@ -37,7 +34,6 @@ import com.wux.wenku.parse.ParseArticle;
 import com.wux.wenku.parse.ParseChapteresList;
 import com.wux.wenku.ui.RemoteProgressDialog;
 import com.wux.wenku.ui.ScrollAwareFABBehavior;
-import com.wux.wenku.view.MaterialListFragment;
 import com.wux.wenku.view.TagFragment;
 
 import java.util.ArrayList;
@@ -60,7 +56,7 @@ public class NovelsBookMarkActivity extends BaseActivity
     private int index = -1;
     private ScrollAwareFABBehavior behavior;
 
-    private MaterialRefreshLayout materialRefreshLayout;
+//    private MaterialRefreshLayout materialRefreshLayout;
     private FloatingActionButton fb1;
     private List<BaseFragment> fragmentList;
     private MyViewPagerAdapter myViewPagerAdapter;
@@ -122,24 +118,24 @@ public class NovelsBookMarkActivity extends BaseActivity
         rv_catalog = (RecyclerView) findViewById(R.id.rvStagger);
         tv_text = (TextView) findViewById(R.id.tv_text);
         tv_title = (TextView) findViewById(R.id.tv_title);
-        materialRefreshLayout = (MaterialRefreshLayout) findViewById(R.id.refresh);
-        materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
-            @Override
-            public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
-                lastChapter();
-            }
-
-            @Override
-            public void onfinish() {
-//                Toast.makeText(NovelsActivity.this, "finish", Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onRefreshLoadMore(final MaterialRefreshLayout materialRefreshLayout) {
-                nextChapter(materialRefreshLayout);
-
-            }
-        });
+//        materialRefreshLayout = (MaterialRefreshLayout) findViewById(R.id.refresh);
+//        materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
+//            @Override
+//            public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
+//                lastChapter();
+//            }
+//
+//            @Override
+//            public void onfinish() {
+////                Toast.makeText(NovelsActivity.this, "finish", Toast.LENGTH_LONG).show();
+//            }
+//
+//            @Override
+//            public void onRefreshLoadMore(final MaterialRefreshLayout materialRefreshLayout) {
+//                nextChapter(materialRefreshLayout);
+//
+//            }
+//        });
         tv_text.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -367,7 +363,7 @@ public class NovelsBookMarkActivity extends BaseActivity
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    materialRefreshLayout.finishRefreshLoadMore();
+//                    materialRefreshLayout.finishRefreshLoadMore();
                 }
             }
         })).start();
@@ -408,7 +404,7 @@ public class NovelsBookMarkActivity extends BaseActivity
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    materialRefreshLayout.finishRefresh();
+//                    materialRefreshLayout.finishRefresh();
                 }
             }
         }).start();
