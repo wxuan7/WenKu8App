@@ -4,19 +4,16 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
-import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -24,10 +21,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.wux.wenku.BaseActivity;
 import com.wux.wenku.BaseFragment;
 import com.wux.wenku.R;
-import com.wux.wenku.app.AppConfig;
 import com.wux.wenku.menu.DrawerAdapter;
 import com.wux.wenku.menu.DrawerItem;
 import com.wux.wenku.menu.SimpleItem;
@@ -206,6 +201,8 @@ public class HomeMenuActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent);
                 break;
             case 1:
+                Intent intent1 = new Intent(this, PageLayoutActivity.class);
+                startActivity(intent1);
                 break;
         }
     }

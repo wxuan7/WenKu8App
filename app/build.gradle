@@ -25,6 +25,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':materialList')
     //如果使用了特殊的Header
+    compile project(':slidingrootnav')
     compile 'com.zhy:flowlayout-lib:1.0.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
@@ -39,8 +40,11 @@ dependencies {
     compile 'com.google.android.gms:play-services-ads:10.2.6'
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.2-alpha-5'
     compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.2-alpha-5'
+    compile 'xiao.free.horizontalrefreshlayout:lib:v0.1.2'
     testCompile 'junit:junit:4.12'
-    compile project(':slidingrootnav')
+    //    compile 'com.lsjwzh:recyclerviewpager:1.0.8'
+    //    compile 'com.github.lsjwzh.RecyclerViewPager:lib:v1.1.2'
+    compile project(':RecycleViewPagerlib')
 }
 repositories {
     mavenCentral()

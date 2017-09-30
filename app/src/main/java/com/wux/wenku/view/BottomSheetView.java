@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wux.wenku.R;
-import com.wux.wenku.activity.NovelsActivity;
+import com.wux.wenku.activity.NovelsPageActivity;
 import com.wux.wenku.adapter.RVRecommendAdapter;
 import com.wux.wenku.app.AppConfig;
 import com.wux.wenku.model.Novels;
@@ -249,12 +249,12 @@ public class BottomSheetView implements View.OnClickListener, AppConfig.OnHandle
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_catalog:
-                Intent intent = new Intent(mActivity, NovelsActivity.class);
+                Intent intent = new Intent(mActivity, NovelsPageActivity.class);
                 intent.putExtra("data", mNovel);
                 mActivity.startActivity(intent);
                 break;
             case R.id.tv_lastupd:
-                Intent intent2 = new Intent(mActivity, NovelsActivity.class);
+                Intent intent2 = new Intent(mActivity, NovelsPageActivity.class);
                 intent2.putExtra("data", mNovel);
                 intent2.putExtra("index", -2);
                 mActivity.startActivity(intent2);
