@@ -27,6 +27,9 @@ public class FileUtil {
      */
     public static void putContent(String novel, String chapter, String content) {
         try {
+            if (!isFileExist(SDPATH )) {
+                File tempf = createSDDir(SDPATH);
+            }
             if (!isFileExist(SDPATH + novel)) {
                 File tempf = createSDDir(SDPATH + novel);
             }

@@ -136,7 +136,7 @@ public class NovelsPageActivity extends BaseActivity
         adapter.setOnItemClickListener(this);
         mDrawer.openDrawer(GravityCompat.START);
         if (index > -1) {
-            rv_catalog.smoothScrollToPosition(index);
+//            rv_catalog.smoothScrollToPosition(index);
         }
     }
 

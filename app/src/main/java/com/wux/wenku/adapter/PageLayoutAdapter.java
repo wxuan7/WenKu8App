@@ -37,6 +37,7 @@ public class PageLayoutAdapter extends RecyclerView.Adapter<PageLayoutAdapter.Si
     private final RecyclerView mRecyclerView;
     private final List<Integer> mItems;
     private int mCurrentItemId = 0;
+
     private int[] imageIds = {R.mipmap.card_cover1, R.mipmap.card_cover2, R.mipmap.card_cover3,
             R.mipmap.card_cover4, R.mipmap.card_cover5, R.mipmap.card_cover6,
             R.mipmap.card_cover7, R.mipmap.card_cover8};

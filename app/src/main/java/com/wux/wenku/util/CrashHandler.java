@@ -30,7 +30,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
 
     public void uncaughtException(Thread arg0, Throwable arg1) {
-        System.out.println("程序挂掉了 ");
+        System.out.println("发生未知错误");
         // 在此可以把用户手机的一些信息以及异常信息捕获并上传,
         //干掉当前的程序
         Log.e("动漫化作品",arg1.getMessage());
