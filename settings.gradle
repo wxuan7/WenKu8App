@@ -1,1 +1,1 @@
-include ':app', ':materialList', ':slidingrootnav'
+include ':app', ':materialList', ':slidingrootnav', ':recycleViewPagerlib'

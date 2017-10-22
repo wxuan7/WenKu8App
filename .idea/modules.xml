@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/WenKu8App-master.iml" filepath="$PROJECT_DIR$/WenKu8App-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/materialList/materialList.iml" filepath="$PROJECT_DIR$/materialList/materialList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/recycleViewPagerlib/recycleViewPagerlib.iml" filepath="$PROJECT_DIR$/recycleViewPagerlib/recycleViewPagerlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/slidingrootnav/slidingrootnav.iml" filepath="$PROJECT_DIR$/slidingrootnav/slidingrootnav.iml" />
     </modules>
   </component>

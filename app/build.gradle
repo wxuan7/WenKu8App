@@ -44,7 +44,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     //    compile 'com.lsjwzh:recyclerviewpager:1.0.8'
     //    compile 'com.github.lsjwzh.RecyclerViewPager:lib:v1.1.2'
-    compile project(':RecycleViewPagerlib')
+    compile project(':recycleViewPagerlib')
 }
 repositories {
     mavenCentral()
