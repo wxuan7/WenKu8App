@@ -16,7 +16,7 @@ import java.io.OutputStreamWriter;
 
 public class FileUtil {
     private static String SDPATH = Environment.getExternalStorageDirectory() + "/wenku8/";
-    private  static String _Favorite = "favorite";
+    private static String _Favorite = "favorite";
 
     /**
      * 保存文件作为缓存
@@ -27,7 +27,7 @@ public class FileUtil {
      */
     public static void putContent(String novel, String chapter, String content) {
         try {
-            if (!isFileExist(SDPATH )) {
+            if (!isFileExist(SDPATH)) {
                 File tempf = createSDDir(SDPATH);
             }
             if (!isFileExist(SDPATH + novel)) {
@@ -49,19 +49,22 @@ public class FileUtil {
             Log.e("m", "file write error:" + e);
         }
     }
-    public static void saveFavorite(int bookcase,String content) {
+
+    public static void saveFavorite(int bookcase, String content) {
         try {
             if (!isFileExist(SDPATH + _Favorite)) {
                 File tempf = createSDDir(SDPATH + _Favorite);
             }
-            String favPath = SDPATH + _Favorite + File.separator +  bookcase + ".txt";
+            String favPath = SDPATH + _Favorite + File.separator + bookcase + ".txt";
             saveFile(favPath, content);
         } catch (Exception e) {
             Log.e("m", "file write error:" + e);
         }
     }
+
     /**
      * 保存文件
+     *
      * @param path
      * @param content
      * @throws Exception
@@ -136,14 +139,15 @@ public class FileUtil {
 
     /**
      * 获取
+     *
      * @return
      */
     public static String getFavoriteHtml(int bookcase) {
         StringBuffer sb = new StringBuffer();
         try {
             String favPath = SDPATH + _Favorite + File.separator + bookcase + ".txt";
-            if (!isFileExist(favPath)){
-                return  null;
+            if (!isFileExist(favPath)) {
+                return null;
             }
             File file = new File(favPath);
             BufferedReader br = new BufferedReader(new FileReader(file));
@@ -157,6 +161,7 @@ public class FileUtil {
         }
         return sb.toString().replace(" ", "\n");
     }
+
     /**
      * 判断文件是否 存在
      *

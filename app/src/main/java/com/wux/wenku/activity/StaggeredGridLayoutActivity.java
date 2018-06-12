@@ -135,13 +135,13 @@ public class StaggeredGridLayoutActivity extends BaseActivity implements AppConf
                         @Override
                         public void run() {
                             try {
-                                String text = ParseArticle.parseArticle(mNovels.getnTitle(),nList.get(position).getChapterName(),nList.get(position).getUrl());
+                                String text = ParseArticle.parseArticle(mNovels.getnTitle(), nList.get(position).getChapterName(), nList.get(position).getUrl());
                                 Bundle data = new Bundle();
                                 data.putString("text", text.replace(" ", "\n"));
                                 AppConfig.sendMessage(1, StaggeredGridLayoutActivity.this, 2, 0, data);
                             } catch (Exception e) {
                                 e.printStackTrace();
-                                AppConfig.sendMessage(0,e.getMessage());
+                                AppConfig.sendMessage(0, e.getMessage());
                             }
                         }
                     }).start();
@@ -170,7 +170,7 @@ public class StaggeredGridLayoutActivity extends BaseActivity implements AppConf
                     AppConfig.sendMessage(1, StaggeredGridLayoutActivity.this, 1, 1, null);
                 } catch (Exception e) {
                     e.printStackTrace();
-                    AppConfig.sendMessage(0,e.getMessage());
+                    AppConfig.sendMessage(0, e.getMessage());
                 }
 
             }

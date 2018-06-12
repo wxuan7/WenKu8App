@@ -17,14 +17,15 @@ import java.util.Map;
  * Created by 365rili on 16/6/14.
  */
 public class AppConfig extends Application {
-    public static Map<String, String> _Cookie ;
+    public static Map<String, String> _Cookie;
     public static String _UserName = "kuien";
     public static String _Pwd = "kuien";
     public static String _LoginURL = "http://www.wenku8.com/login.php?do=submit";//登录url
-    public static String _IndexURL =  "http://www.wenku8.com";
+    public static String _IndexURL = "http://www.wenku8.com";
     public static MainHandler mainHandler = null;
     public static String _nbsp = " ";//&nbsp占位符
-    public static JsoupUtil mJsoupUtil=null;
+    public static JsoupUtil mJsoupUtil = null;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -37,6 +38,7 @@ public class AppConfig extends Application {
         /* 初始化日志 */
 //        ConfigureLog4J.configure();
     }
+
     public static void sendMessage(int what, Object obj) {
         if (mainHandler != null) {
             mainHandler.sendMessage(mainHandler.obtainMessage(what, obj));
@@ -50,6 +52,7 @@ public class AppConfig extends Application {
             msg.sendToTarget();
         }
     }
+
     public static class MainHandler extends Handler {
         private Context context = null;
 

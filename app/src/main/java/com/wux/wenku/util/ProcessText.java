@@ -18,8 +18,8 @@ import java.util.List;
  */
 
 public class ProcessText {
-    private long pages;//总页数
     private final int SIZE = 900;//每一页的字节数 字节数固定
+    private long pages;//总页数
     private long bytescount;//字节总数
     private long currentpage;//当前页面
     private RandomAccessFile readFile;
@@ -110,7 +110,7 @@ public class ProcessText {
     /*********************************************************/
     public int[] getPage(TextView textView) {
         int count = textView.getLineCount();
-        textView.setText(mContent);
+//        textView.setText(mContent);mContent
         int pCount = getPageLineCount(textView);
         int pageNum = count / pCount;
         int page[] = new int[pageNum];

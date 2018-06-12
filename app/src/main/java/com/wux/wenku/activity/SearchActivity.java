@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
@@ -15,8 +14,6 @@ import android.widget.Toast;
 
 import com.dexafree.materialList.card.Card;
 import com.dexafree.materialList.card.CardProvider;
-import com.dexafree.materialList.card.OnActionClickListener;
-import com.dexafree.materialList.card.action.TextViewAction;
 import com.dexafree.materialList.view.MaterialListAdapter;
 import com.dexafree.materialList.view.MaterialListView;
 import com.squareup.picasso.Picasso;
@@ -34,12 +31,14 @@ import java.util.List;
 
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
 
-public class SearchActivity extends BaseActivity implements AppConfig.OnHandlerCallBack{
+public class SearchActivity extends BaseActivity implements AppConfig.OnHandlerCallBack {
+    private final String searchUrl = "http://www.wenku8.com/modules/article/search" +
+            ".php?searchtype=articlename&searchkey=";
+    private final String searchUrl2 = "http://www.wenku8.com/wap/article/search" +
+            ".php?searchtype=articlename&searchkey=";
     private EditText et_search;
     private MaterialListView mlv_search;
     private MaterialListAdapter adapter;
-    private final String searchUrl = "http://www.wenku8.com/modules/article/search.php?searchtype=articlename&searchkey=";
-    private final String searchUrl2 = "http://www.wenku8.com/wap/article/search.php?searchtype=articlename&searchkey=";
     private List<Novels> mList = new ArrayList<>();
 
     @Override
@@ -71,7 +70,8 @@ public class SearchActivity extends BaseActivity implements AppConfig.OnHandlerC
         adapter = mlv_search.getAdapter();
         emptyList();
     }
-    private void emptyList(){
+
+    private void emptyList() {
         final ImageView emptyView = new ImageView(this);//(ImageView) findViewById(R.id.imageView);
         emptyView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         mlv_search.setEmptyView(emptyView);
@@ -87,15 +87,17 @@ public class SearchActivity extends BaseActivity implements AppConfig.OnHandlerC
         switch (v.getId()) {
             case R.id.bt_search:
 
+
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            String url = searchUrl + URLEncoder.encode(et_search.getText().toString(),"gbk");
+                            String url = searchUrl + URLEncoder.encode(et_search.getText()
+                                    .toString(), "gbk") + "&charset=gbk";
                             ArrayList<Novels> list = ParseNovelList.parseSearchNovel(url);
                             Bundle data = new Bundle();
-                            data.putSerializable("data",list);
-                            AppConfig.sendMessage(1,SearchActivity.this,1,0,data);
+                            data.putSerializable("data", list);
+                            AppConfig.sendMessage(1, SearchActivity.this, 1, 0, data);
                         } catch (UnsupportedEncodingException e) {
                             e.printStackTrace();
                         } catch (Exception e) {
@@ -109,12 +111,12 @@ public class SearchActivity extends BaseActivity implements AppConfig.OnHandlerC
         super.onClick(v);
     }
 
-    private String toGBK(String str){
+    private String toGBK(String str) {
         StringBuilder sb = new StringBuilder();
         try {
             byte[] b = str.getBytes("GBK");
-            for(byte by :b){
-                sb.append("%"+Integer.toHexString((by & 0xff)).toUpperCase());
+            for (byte by : b) {
+                sb.append("%" + Integer.toHexString((by & 0xff)).toUpperCase());
             }
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -143,9 +145,10 @@ public class SearchActivity extends BaseActivity implements AppConfig.OnHandlerC
 
         return provider.endConfig().build();
     }
+
     @Override
     public void handlercallback(int arg1, int arg2, Bundle data) {
-        switch (arg1){
+        switch (arg1) {
             case 1:
                 ArrayList<Novels> list = (ArrayList) data.getSerializable("data");
                 List<Card> cards = new ArrayList<Card>();
@@ -154,11 +157,11 @@ public class SearchActivity extends BaseActivity implements AppConfig.OnHandlerC
                     mList.add(nove);
                 }
 
-              adapter.clearAll();
+                adapter.clearAll();
                 adapter.notifyDataSetChanged();
 
                 adapter.addAll(cards);
-                Toast.makeText(this,cards.size()+"相关作品",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, cards.size() + "相关作品", Toast.LENGTH_SHORT).show();
                 break;
             case 2:
                 break;

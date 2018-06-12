@@ -9,7 +9,6 @@ import android.util.Log;
 import com.wux.wenku.app.AppConfig;
 import com.wux.wenku.model.Chapters;
 import com.wux.wenku.model.Novels;
-import com.wux.wenku.util.JsoupUtil;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -185,7 +184,7 @@ public class ParseNovelDetail extends ParseHTML {
             Element ele2 = doc.select("div.blockcontent div").first();
             title += "\n" + ele2.text();
             long end = System.currentTimeMillis();
-            if (end-begin<1000){
+            if (end - begin < 1000) {
                 Thread.sleep(1000);
             }
         } catch (IOException e) {

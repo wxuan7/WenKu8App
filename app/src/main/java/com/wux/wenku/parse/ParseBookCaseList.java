@@ -15,7 +15,6 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * 如果html的标签的class包含空格，例如：<li class="archive-item clearfix"></>需要连续调用select  select("li.archive-item").select("li.clearfix");
@@ -67,10 +66,10 @@ public class ParseBookCaseList extends ParseHTML {
         return list;
     }
 
-    public static boolean removeBookCase(String url,String bookUrl) throws Exception {
+    public static boolean removeBookCase(String url, String bookUrl) throws Exception {
         try {
             Document doc = Jsoup.connect(url).cookies(AppConfig._Cookie).timeout(10000).get();
-            if(doc.toString().contains(bookUrl)){
+            if (doc.toString().contains(bookUrl)) {
                 return false;
             }
         } catch (IOException e) {

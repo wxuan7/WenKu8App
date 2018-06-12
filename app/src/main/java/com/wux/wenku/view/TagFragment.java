@@ -12,17 +12,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.wux.wenku.BaseFragment;
 import com.wux.wenku.R;
 import com.wux.wenku.activity.TypeShowActivity;
 import com.wux.wenku.app.AppConfig;
-import com.wux.wenku.model.Novels;
 import com.wux.wenku.model.Tags;
-import com.wux.wenku.parse.ParseNovelList;
 import com.wux.wenku.parse.ParseTags;
-import com.wux.wenku.ui.RemoteProgressDialog;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -181,7 +177,7 @@ public class TagFragment extends BaseFragment implements AppConfig.OnHandlerCall
                 } catch (Exception e) {
                     e.printStackTrace();
                     AppConfig.sendMessage(0, e.getMessage());
-                } finally{
+                } finally {
                     refreshLayout.finishRefresh();
                 }
             }

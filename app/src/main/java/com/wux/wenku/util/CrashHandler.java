@@ -10,21 +10,21 @@ import android.util.Log;
 
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
     // 需求是 整个应用程序 只有一个 MyCrash-Handler
-    private static CrashHandler INSTANCE ;
+    private static CrashHandler INSTANCE;
     private Context context;
 
     //1.私有化构造方法
-    private CrashHandler(){
+    private CrashHandler() {
 
     }
 
-    public static synchronized CrashHandler getInstance(){
+    public static synchronized CrashHandler getInstance() {
         if (INSTANCE == null)
             INSTANCE = new CrashHandler();
         return INSTANCE;
     }
 
-    public void init(Context context){
+    public void init(Context context) {
         this.context = context;
     }
 
@@ -33,7 +33,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         System.out.println("发生未知错误");
         // 在此可以把用户手机的一些信息以及异常信息捕获并上传,
         //干掉当前的程序
-        Log.e("动漫化作品",arg1.getMessage());
+        Log.e("动漫化作品", arg1.getMessage());
 //        android.os.Process.killProcess(android.os.Process.myPid());
     }
 

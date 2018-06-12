@@ -4,20 +4,17 @@ package com.wux.wenku.parse;
  * Created by WuX on 2017/4/18.
  */
 
+import android.util.Log;
+
 import com.wux.wenku.app.AppConfig;
 import com.wux.wenku.model.Novels;
-import com.wux.wenku.util.JsoupUtil;
 
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 如果html的标签的class包含空格，例如：<li class="archive-item clearfix"></>需要连续调用select  select("li.archive-item").select("li.clearfix");
@@ -37,9 +34,9 @@ public class ParseNovelList extends ParseHTML {
             Document doc = AppConfig.mJsoupUtil.getDocument(href);//Jsoup.connect(href).cookies(AppConfig._Cookie).timeout(10000).get();
             Elements head = doc.select("table.grid tbody tr");
             Element masthead = null;
-            if(href.contains("anime")){
+            if (href.contains("anime")) {
                 masthead = head.get(1);
-            }else{
+            } else {
                 masthead = head.first();
             }
             Elements NovelListElements = masthead.select("td div");
@@ -64,7 +61,7 @@ public class ParseNovelList extends ParseHTML {
                             novels.setnContent(jianjie.text());
                             break;
                         case 3:
-                            if("".equals(novels.getnContent())){
+                            if ("".equals(novels.getnContent())) {
                                 novels.setnContent(contentElements.select("p").get(j).text());
                             }
                             break;
@@ -106,7 +103,9 @@ public class ParseNovelList extends ParseHTML {
 //        setCookies();
         ArrayList<Novels> list = new ArrayList<Novels>();
         try {
-            Document doc = AppConfig.mJsoupUtil.getDocument(href,"GBK");//Jsoup.connect(href).cookies(AppConfig._Cookie).timeout(10000).get();
+            Log.i("url",href);
+            Document doc = AppConfig.mJsoupUtil.getDocument(href);//Jsoup.connect(href).cookies(AppConfig._Cookie).timeout(10000).get();
+            Log.i("doc",doc.toString());
             Element masthead = doc.select("table.grid tbody tr").first();
             Elements NovelListElements = masthead.select("td div");
             for (int i = 0; i < NovelListElements.size(); i = i + 3) {

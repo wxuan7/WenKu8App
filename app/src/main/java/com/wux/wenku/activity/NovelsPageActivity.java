@@ -1,7 +1,6 @@
 package com.wux.wenku.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
@@ -12,16 +11,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.wux.wenku.BaseActivity;
 import com.wux.wenku.R;
 import com.wux.wenku.adapter.PageLayoutAdapter;
@@ -32,7 +25,7 @@ import com.wux.wenku.model.Novels;
 import com.wux.wenku.parse.ParseArticle;
 import com.wux.wenku.parse.ParseChapteresList;
 import com.wux.wenku.ui.RemoteProgressDialog;
-import com.wux.wenku.ui.ScrollAwareFABBehavior;
+import com.wux.wenku.view.SpaceItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,8 +85,10 @@ public class NovelsPageActivity extends BaseActivity
         mRecyclerView = (RecyclerViewPager) findViewById(R.id.viewpager);
         LinearLayoutManager layout = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(layout);
-        mLayoutAdapter = new PageLayoutAdapter(this, mRecyclerView);
+        mLayoutAdapter = new PageLayoutAdapter(this, mRecyclerView, null);
         mRecyclerView.setAdapter(mLayoutAdapter);
+//        mRecyclerView.addItemDecoration(new SpaceItemDecoration(30));
+
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLongClickable(true);
 
@@ -111,7 +106,7 @@ public class NovelsPageActivity extends BaseActivity
 
 
     private void loadChapteresList() {
-        new RemoteProgressDialog(this,new Runnable() {
+        new RemoteProgressDialog(this, new Runnable() {
             @Override
             public void run() {
                 try {
@@ -189,7 +184,7 @@ public class NovelsPageActivity extends BaseActivity
         mDrawer.closeDrawer(GravityCompat.START);
         final Chapters chapters = mNovels.getChapterses().get(index);
 //        if (null == chapters.getText() || "".equals(chapters.getText())) {
-        new RemoteProgressDialog(this,new Runnable() {
+        new RemoteProgressDialog(this, new Runnable() {
             @Override
             public void run() {
                 try {
@@ -248,6 +243,7 @@ public class NovelsPageActivity extends BaseActivity
                 }
                 break;
             case 3:
+                refreshLayout.onRefreshComplete();
                 break;
         }
     }
@@ -282,14 +278,16 @@ public class NovelsPageActivity extends BaseActivity
                             }
                         }
                     } else {
-                        Snackbar.make(NovelsPageActivity.this.getCurrentFocus(), "已经是最新章节", Snackbar.LENGTH_SHORT)
-                                .setAction("Action", null).show();
-//                        AppConfig.sendMessage(0, "已经是最新章节");
+                        AppConfig.sendMessage(0, "已经到开头啦");
+//                        Snackbar.make(NovelsPageActivity.this.getCurrentFocus(), "已经是最新章节", Snackbar.LENGTH_SHORT)
+//                                .setAction("Action", null).show();
+//                        AppConfig.sendMessage(0, Ø"已经是最新章节");
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    refreshLayout.onRefreshComplete();
+                    AppConfig.sendMessage(1, NovelsPageActivity.this, 3, 0, null);
+//                    refreshLayout.onRefreshComplete();
                 }
             }
         })).start();
@@ -330,7 +328,8 @@ public class NovelsPageActivity extends BaseActivity
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    refreshLayout.onRefreshComplete();
+                    AppConfig.sendMessage(1, NovelsPageActivity.this, 3, 0, null);
+//                    refreshLayout.onRefreshComplete();
                 }
             }
         }).start();

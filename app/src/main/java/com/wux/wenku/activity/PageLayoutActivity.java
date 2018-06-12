@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
-
 import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
 import com.wux.wenku.R;
 import com.wux.wenku.adapter.PageLayoutAdapter;
@@ -13,6 +12,9 @@ import xiao.free.horizontalrefreshlayout.HorizontalRefreshLayout;
 import xiao.free.horizontalrefreshlayout.RefreshCallBack;
 import xiao.free.horizontalrefreshlayout.refreshhead.NiceRefreshHeader;
 
+/**
+ *
+ */
 public class PageLayoutActivity extends AppCompatActivity implements RefreshCallBack {
     private HorizontalRefreshLayout refreshLayout;
     protected RecyclerViewPager mRecyclerView;
@@ -31,7 +33,7 @@ public class PageLayoutActivity extends AppCompatActivity implements RefreshCall
         mRecyclerView = (RecyclerViewPager) findViewById(R.id.viewpager);
         LinearLayoutManager layout = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(layout);
-        mLayoutAdapter = new PageLayoutAdapter(this, mRecyclerView);
+        mLayoutAdapter = new PageLayoutAdapter(this, mRecyclerView, "");
         mRecyclerView.setAdapter(mLayoutAdapter);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLongClickable(true);

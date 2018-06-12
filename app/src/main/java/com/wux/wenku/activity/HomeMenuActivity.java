@@ -1,5 +1,6 @@
 package com.wux.wenku.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -13,10 +14,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -69,6 +72,30 @@ public class HomeMenuActivity extends AppCompatActivity implements View.OnClickL
         initView(toolbar);
         initNav(savedInstanceState, toolbar);
         initData();
+        Intent intent = getIntent();
+        if(intent!=null){
+             String info = intent.getStringExtra("data");
+             if(info!=null){
+                 AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+                 dialog.setMessage(info);
+                 dialog.setPositiveButton("返回", new DialogInterface.OnClickListener() {
+                     @Override
+                     public void onClick(DialogInterface dialog, int which) {
+                         Intent intent  = new Intent();
+                         intent.putExtra("data","11111");
+                         setResult(RESULT_OK,intent);
+                         finish();
+                     }
+                 });
+                 dialog.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+                     @Override
+                     public void onClick(DialogInterface dialog, int which) {
+                         dialog.dismiss();
+                     }
+                 });
+                 dialog.show();
+             }
+        }
     }
 
     private void initView(Toolbar toolbar) {
@@ -201,7 +228,7 @@ public class HomeMenuActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent);
                 break;
             case 1:
-                Intent intent1 = new Intent(this, PageLayoutActivity.class);
+                Intent intent1 = new Intent(this, SearchActivity.class);
                 startActivity(intent1);
                 break;
         }
@@ -256,5 +283,10 @@ public class HomeMenuActivity extends AppCompatActivity implements View.OnClickL
         if (!fragmentList.get(_SELECTEDPOS).onBackPressed()) {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="tabButton">
-        <attr name="buttonTitle" format="reference|string"/>
+        <attr name="buttonTitle" format="reference|string" />
     </declare-styleable>
 
     <declare-styleable name="FocusView">

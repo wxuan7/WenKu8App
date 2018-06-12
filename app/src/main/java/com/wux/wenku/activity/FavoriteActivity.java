@@ -5,13 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.widget.DialogTitle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -33,7 +31,6 @@ import com.wux.wenku.R;
 import com.wux.wenku.app.AppConfig;
 import com.wux.wenku.model.Novels;
 import com.wux.wenku.parse.ParseBookCaseList;
-import com.wux.wenku.parse.ParseNovelDetail;
 import com.wux.wenku.ui.RemoteProgressDialog;
 import com.wux.wenku.view.BottomSheetView;
 
@@ -207,7 +204,7 @@ public class FavoriteActivity extends BaseActivity implements AppConfig.OnHandle
     private void showDelDialog(final int pos) {
         android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(this);
         builder.setTitle("删除");
-        builder.setMessage("确定从书架移除“"+nList.get(pos).getnTitle()+"”吗？");
+        builder.setMessage("确定从书架移除“" + nList.get(pos).getnTitle() + "”吗？");
         builder.setNegativeButton("取消", null);
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
@@ -217,13 +214,13 @@ public class FavoriteActivity extends BaseActivity implements AppConfig.OnHandle
                     public void run() {
                         try {
 //                            String removeUrl = bookCaseUrl+sp_bookcase.getSelectedItemPosition()+"&delid="+nList.get(pos).getnBookID();
-                            boolean msg = ParseBookCaseList.removeBookCase(nList.get(pos).getnBookCaseUrl(),nList.get(pos).getnDetailsUrl());
+                            boolean msg = ParseBookCaseList.removeBookCase(nList.get(pos).getnBookCaseUrl(), nList.get(pos).getnDetailsUrl());
 //                             ParseNovelDetail.addBookCase(mNovel.getnAddBookCaseUrl());
-                            if(msg) {
+                            if (msg) {
                                 AppConfig.sendMessage(1, FavoriteActivity.this, 2, pos, null);
-                                AppConfig.sendMessage(0,"成功移除");
-                            }else{
-                                AppConfig.sendMessage(0,"发生意外，移除失败喽");
+                                AppConfig.sendMessage(0, "成功移除");
+                            } else {
+                                AppConfig.sendMessage(0, "发生意外，移除失败喽");
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -270,7 +267,7 @@ public class FavoriteActivity extends BaseActivity implements AppConfig.OnHandle
                 mListView.getAdapter().notifyDataSetChanged();
                 break;
             case 2:
-                mListView.getAdapter().remove(mListView.getAdapter().getCard(arg2),true);
+                mListView.getAdapter().remove(mListView.getAdapter().getCard(arg2), true);
                 nList.remove(arg2);
                 break;
         }

@@ -90,7 +90,7 @@
                 android:layout_margin="2dp"
                 android:layout_toRightOf="@id/local_ad2"
                 android:scaleType="centerCrop"
-                android:background="@drawable/md"/>
+                android:background="@drawable/md" />
 
             <ImageButton
                 android:id="@+id/local_app_store"
@@ -100,7 +100,7 @@
                 android:layout_margin="2dp"
                 android:layout_toRightOf="@id/local_ad1"
                 android:scaleType="centerCrop"
-                android:background="@drawable/md"/>
+                android:background="@drawable/md" />
 
             <ImageButton
                 android:id="@+id/local_video"

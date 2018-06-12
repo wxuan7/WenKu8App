@@ -5,9 +5,9 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.widget.ImageButton;
 
-import com.wux.wenku.R;
-import com.wux.wenku.BaseActivity;
 import com.fanyafeng.wenku.view.FocusView;
+import com.wux.wenku.BaseActivity;
+import com.wux.wenku.R;
 
 //需要搭配Baseactivity，这里默认为Baseactivity,并且默认BaseActivity为包名的根目录
 public class FocusActivity extends BaseActivity {

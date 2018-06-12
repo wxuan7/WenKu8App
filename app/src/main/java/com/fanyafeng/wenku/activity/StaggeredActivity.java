@@ -11,11 +11,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
-import com.wux.wenku.BaseActivity;
 import com.fanyafeng.wenku.Constant.MaterialDesignConstant;
+import com.fanyafeng.wenku.fragment.ViewPagerFragment;
+import com.wux.wenku.BaseActivity;
 import com.wux.wenku.R;
 import com.wux.wenku.adapter.RVAdapter;
-import com.fanyafeng.wenku.fragment.ViewPagerFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;

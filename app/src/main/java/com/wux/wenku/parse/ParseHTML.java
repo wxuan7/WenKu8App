@@ -1,13 +1,5 @@
 package com.wux.wenku.parse;
 
-import com.wux.wenku.app.AppConfig;
-import com.wux.wenku.util.JsoupUtil;
-
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
-
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**

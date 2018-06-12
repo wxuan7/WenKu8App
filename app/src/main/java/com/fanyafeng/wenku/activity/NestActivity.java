@@ -2,9 +2,9 @@ package com.fanyafeng.wenku.activity;
 
 import android.os.Bundle;
 
-import com.wux.wenku.R;
-import com.wux.wenku.BaseActivity;
 import com.fanyafeng.wenku.view.MyScrollView;
+import com.wux.wenku.BaseActivity;
+import com.wux.wenku.R;
 
 //需要搭配Baseactivity，这里默认为Baseactivity,并且默认BaseActivity为包名的根目录
 public class NestActivity extends BaseActivity {

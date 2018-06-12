@@ -9,11 +9,9 @@ import android.widget.TextView;
 
 import com.andview.refreshview.recyclerview.BaseRecyclerAdapter;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.wux.wenku.R;
 import com.fanyafeng.wenku.util.ControllerListenerUtil;
 import com.fanyafeng.wenku.util.MyUtils;
-
-import org.w3c.dom.Text;
+import com.wux.wenku.R;
 
 import java.util.List;
 

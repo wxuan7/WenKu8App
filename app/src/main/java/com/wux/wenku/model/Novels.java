@@ -25,7 +25,7 @@ public class Novels implements Serializable {
     private String nLength;//文章长度
     private String nAddBookCaseUrl;//加入书架的url
     private String nUserVote;//用户推荐
-    private List<Chapters> chapterses = null; // 目录
+    private List<Chapters> chapterses = new ArrayList<>(); // 目录
     private List<Novels> recommend1 = null;// 同分类推荐
     private List<Novels> recommend2 = null;// 同分类完结推荐
     private List<Novels> others = null;
@@ -40,7 +40,7 @@ public class Novels implements Serializable {
     }
 
     public List<Novels> getOthers() {
-        if(others == null){
+        if (others == null) {
             others = new ArrayList<>();
         }
         return others;
@@ -192,8 +192,8 @@ public class Novels implements Serializable {
     }
 
     public String getnBookCaseUrl() {
-        String url = nBookCaseUrl.replace("javascript:if(confirm('确实要将本书移出书架么？')) document.location='","").replace("'","").replace(";","");
-        url = AppConfig._IndexURL+url;
+        String url = nBookCaseUrl.replace("javascript:if(confirm('确实要将本书移出书架么？')) document.location='", "").replace("'", "").replace(";", "");
+        url = AppConfig._IndexURL + url;
         return url;
     }
 

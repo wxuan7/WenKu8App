@@ -10,14 +10,10 @@ import android.util.Log;
 import com.wux.wenku.app.AppConfig;
 import com.wux.wenku.model.Chapters;
 import com.wux.wenku.util.FileUtil;
-import com.wux.wenku.util.JsoupUtil;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -36,7 +32,7 @@ public class ParseArticle extends ParseHTML {
                 Document doc = AppConfig.mJsoupUtil.getDocument(href);
                 Element masthead = doc.select("div#content").first();
                 String content = masthead.text().replace(" ", "\r\n");
-                FileUtil.putContent(novel,chapter,content);
+                FileUtil.putContent(novel, chapter, content);
                 return content;
             } catch (Exception e) {
                 String msg = e.getMessage();

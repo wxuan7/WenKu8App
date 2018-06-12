@@ -16,13 +16,7 @@ import com.wux.wenku.R;
 import com.wux.wenku.app.AppConfig;
 import com.wux.wenku.ui.RippleView;
 
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
-
-import java.io.IOException;
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Map;
 
 public class LoginActivity extends BaseActivity {
     private TextInputLayout layoutEtEmail;
@@ -56,7 +50,8 @@ public class LoginActivity extends BaseActivity {
             case R.id.rv_login:
                 AppConfig._UserName = et_username.getText().toString().trim();
                 AppConfig._Pwd = et_pwd.getText().toString().trim();
-                Toast.makeText(this,"保存成功",Toast.LENGTH_SHORT).show();;
+                Toast.makeText(this, "保存成功", Toast.LENGTH_SHORT).show();
+
 //                new Thread(new Runnable() {
 //                    @Override
 //                    public void run() {
@@ -82,6 +77,7 @@ public class LoginActivity extends BaseActivity {
                 break;
         }
     }
+
     static class LoginHandler extends Handler {
 
         WeakReference<LoginActivity> mActivity;
@@ -112,6 +108,7 @@ public class LoginActivity extends BaseActivity {
             }
         }
     }
+
     private void initView() {
         layoutEtEmail = (TextInputLayout) findViewById(R.id.layoutEtEmail);
         et_username = (EditText) findViewById(R.id.et_username);

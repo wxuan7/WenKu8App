@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.widget.ImageButton;
 
+import com.fanyafeng.wenku.view.FocusView;
 import com.wux.wenku.BaseActivity;
 import com.wux.wenku.R;
-import com.fanyafeng.wenku.view.FocusView;
 
 public class V7WidgetActivity extends BaseActivity {
     private ImageButton ibLocal;

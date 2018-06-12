@@ -11,10 +11,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.wux.wenku.R;
-import com.wux.wenku.BaseActivity;
 import com.fanyafeng.wenku.fragment.TabLayoutFragment;
 import com.fanyafeng.wenku.view.StickyNavLayout;
+import com.wux.wenku.BaseActivity;
+import com.wux.wenku.R;
 
 import java.util.ArrayList;
 import java.util.List;

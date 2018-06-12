@@ -32,7 +32,8 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_tab_layout"
+    <include
+        layout="@layout/content_tab_layout"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         tools:layout_editor_absoluteY="8dp"

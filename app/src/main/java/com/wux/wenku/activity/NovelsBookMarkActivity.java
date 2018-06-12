@@ -40,7 +40,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NovelsBookMarkActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener, RVAdapter.OnItemClickListener, AppConfig.OnHandlerCallBack,ViewPager.OnPageChangeListener,TagFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, RVAdapter.OnItemClickListener, AppConfig.OnHandlerCallBack, ViewPager.OnPageChangeListener, TagFragment.OnFragmentInteractionListener {
     private TabLayout layoutTab;
     private ViewPager viewpagerTab;
 
@@ -56,7 +56,7 @@ public class NovelsBookMarkActivity extends BaseActivity
     private int index = -1;
     private ScrollAwareFABBehavior behavior;
 
-//    private MaterialRefreshLayout materialRefreshLayout;
+    //    private MaterialRefreshLayout materialRefreshLayout;
     private FloatingActionButton fb1;
     private List<BaseFragment> fragmentList;
     private MyViewPagerAdapter myViewPagerAdapter;
@@ -148,8 +148,9 @@ public class NovelsBookMarkActivity extends BaseActivity
             }
         });
     }
+
     private void initData() {
-        myViewPagerAdapter = new MyViewPagerAdapter(getSupportFragmentManager(), new String[]{"目录","书签"}, fragmentList);
+        myViewPagerAdapter = new MyViewPagerAdapter(getSupportFragmentManager(), new String[]{"目录", "书签"}, fragmentList);
         viewpagerTab.setAdapter(myViewPagerAdapter);
         viewpagerTab.setOffscreenPageLimit(2);
         viewpagerTab.addOnPageChangeListener(this);
@@ -174,7 +175,7 @@ public class NovelsBookMarkActivity extends BaseActivity
     }
 
     private void loadChapteresList() {
-        new RemoteProgressDialog(this,new Runnable() {
+        new RemoteProgressDialog(this, new Runnable() {
             @Override
             public void run() {
                 try {

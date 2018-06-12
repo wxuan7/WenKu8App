@@ -39,5 +39,5 @@
     <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
     <string name="title_activity_type_show">TypeShowActivity</string>
     <string name="title_activity_favorite">FavoriteActivity</string>
-    <string name="bookcase" >http://www.wenku8.com/modules/article/bookcase.php?classid=</string>
+    <string name="bookcase">http://www.wenku8.com/modules/article/bookcase.php?classid=</string>
 </resources>

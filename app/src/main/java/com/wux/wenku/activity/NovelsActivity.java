@@ -1,6 +1,5 @@
 package com.wux.wenku.activity;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -36,13 +35,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NovelsActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener, RVAdapter.OnItemClickListener, AppConfig.OnHandlerCallBack,OnRefreshListener,OnLoadmoreListener {
+        implements NavigationView.OnNavigationItemSelectedListener, RVAdapter.OnItemClickListener, AppConfig.OnHandlerCallBack, OnRefreshListener, OnLoadmoreListener {
 
     private DrawerLayout mDrawer = null;//抽屉
     private RecyclerView rv_catalog = null;//目录
     private TextView tv_text = null;//正文
     private TextView tv_title = null;//章节
-//    private SimpleDraweeView sdvStaggerTop;//封面
+    //    private SimpleDraweeView sdvStaggerTop;//封面
     private ScrollView sv_text = null;
     private RVAdapter adapter = null;
     private Novels mNovels = null;
@@ -124,7 +123,7 @@ public class NovelsActivity extends BaseActivity
     }
 
     private void loadChapteresList() {
-        new RemoteProgressDialog(this,new Runnable() {
+        new RemoteProgressDialog(this, new Runnable() {
             @Override
             public void run() {
                 try {
@@ -202,7 +201,7 @@ public class NovelsActivity extends BaseActivity
         mDrawer.closeDrawer(GravityCompat.START);
         final Chapters chapters = mNovels.getChapterses().get(index);
 //        if (null == chapters.getText() || "".equals(chapters.getText())) {
-        new RemoteProgressDialog(this,new Runnable() {
+        new RemoteProgressDialog(this, new Runnable() {
             @Override
             public void run() {
                 try {

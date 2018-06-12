@@ -36,9 +36,9 @@ public class RVRecommendAdapter extends BaseRecyclerAdapter<RVRecommendAdapter.V
     }
 
     public interface OnItemClickListener {
-        void onItemClickListener(View parentView,View view, Novels novel, int position);
+        void onItemClickListener(View parentView, View view, Novels novel, int position);
 
-        void onItemLongClickListener(View parentView,View view, Novels novel, int position);
+        void onItemLongClickListener(View parentView, View view, Novels novel, int position);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class RVRecommendAdapter extends BaseRecyclerAdapter<RVRecommendAdapter.V
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType, boolean isItem) {
         View view = null;
         view = LayoutInflater.from(context).inflate(R.layout.item_recommend, parent, false);
-        if(parentView==null){
+        if (parentView == null) {
             parentView = parent;
         }
         return new ViewHolder(view);
@@ -66,13 +66,13 @@ public class RVRecommendAdapter extends BaseRecyclerAdapter<RVRecommendAdapter.V
             holder.sdvRvItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onItemClickListener.onItemClickListener(parentView,v, mList.get(position), position);
+                    onItemClickListener.onItemClickListener(parentView, v, mList.get(position), position);
                 }
             });
             holder.sdvRvItem.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    onItemClickListener.onItemLongClickListener(parentView,v, mList.get(position), position);
+                    onItemClickListener.onItemLongClickListener(parentView, v, mList.get(position), position);
                     return false;
                 }
             });

@@ -17,6 +17,7 @@
 package com.wux.wenku.adapter;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wux.wenku.R;
+import com.wux.wenku.ui.ReadTextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,31 +39,41 @@ public class PageLayoutAdapter extends RecyclerView.Adapter<PageLayoutAdapter.Si
     private final RecyclerView mRecyclerView;
     private final List<Integer> mItems;
     private int mCurrentItemId = 0;
+    private String _FileUrl = null;
+    private ReadTextView tv_content;
 
     private int[] imageIds = {R.mipmap.card_cover1, R.mipmap.card_cover2, R.mipmap.card_cover3,
             R.mipmap.card_cover4, R.mipmap.card_cover5, R.mipmap.card_cover6,
             R.mipmap.card_cover7, R.mipmap.card_cover8};
 
-    public static class SimpleViewHolder extends RecyclerView.ViewHolder {
-        public final TextView title;
+    public  class SimpleViewHolder extends RecyclerView.ViewHolder {
+        public final ReadTextView title;
         public final ImageView myImage;
 
         public SimpleViewHolder(View view) {
             super(view);
-            title = (TextView) view.findViewById(R.id.title);
-            myImage = (ImageView) view.findViewById(R.id.image);
+            title = (ReadTextView) view.findViewById(R.id.tv_content);
+            myImage = (ImageView) view.findViewById(R.id.iv_image);
+            if(tv_content==null){
+                tv_content=title;
+            }
         }
     }
 
-    public PageLayoutAdapter(Context context, RecyclerView recyclerView) {
-        this(context, recyclerView, DEFAULT_ITEM_COUNT);
+    public PageLayoutAdapter(Context context, RecyclerView recyclerView, String fileurl) {
+        this(context, recyclerView, DEFAULT_ITEM_COUNT, fileurl);
     }
 
-    public PageLayoutAdapter(Context context, RecyclerView recyclerView, int itemCount) {
+
+    public PageLayoutAdapter(Context context, RecyclerView recyclerView, int itemCount, String fileurl) {
         mContext = context;
+        _FileUrl = fileurl;
         mItems = new ArrayList<>(itemCount);
         for (int i = 0; i < itemCount; i++) {
             addItem(i);
+        }
+        if(tv_content!=null){
+
         }
 
         mRecyclerView = recyclerView;
@@ -87,7 +99,7 @@ public class PageLayoutAdapter extends RecyclerView.Adapter<PageLayoutAdapter.Si
 
     @Override
     public SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View view = LayoutInflater.from(mContext).inflate(R.layout.item_page_layout, parent, false);
+        final View view = LayoutInflater.from(mContext).inflate(R.layout.item_page_content, parent, false);
         return new SimpleViewHolder(view);
     }
 
@@ -109,5 +121,48 @@ public class PageLayoutAdapter extends RecyclerView.Adapter<PageLayoutAdapter.Si
     @Override
     public int getItemCount() {
         return mItems.size();
+    }
+
+
+    public int[] getPage(TextView textView) {
+        int count = textView.getLineCount();
+//        textView.setText(mContent);
+        int pCount = getPageLineCount(textView);//获取行数
+        int pageNum = count / pCount;//获取页数
+        int page[] = new int[pageNum];
+        for (int i = 0; i < pageNum; i++) {
+            page[i] = textView.getLayout().getLineEnd((i + 1) * pCount - 1);
+        }
+        return page;
+    }
+
+    /**
+     * 计算textview能显示的文本行数
+     *
+     * @param view
+     * @return
+     */
+    private int getPageLineCount(TextView view) {
+        /*
+        * The first row's height is different from other row.
+         */
+        int h = view.getBottom() - view.getTop() - view.getPaddingTop();
+        int firstH = getLineHeight(0, view);
+        int otherH = getLineHeight(1, view);
+        return (h - firstH) / otherH + 1;
+
+    }
+
+    /**
+     * getLineBounds得到每行的高度
+     *
+     * @param line
+     * @param view
+     * @return
+     */
+    private int getLineHeight(int line, TextView view) {
+        Rect rect = new Rect();
+        view.getLineBounds(line, rect);
+        return rect.bottom - rect.top;
     }
 }
